@@ -18,7 +18,8 @@ public class DataBase {
             // Setup statement
             Statement stmt = conn.createStatement();
             // Create query and execute
-            String strSelect = "select title, price, qty from books";
+            int x = 1;
+            String strSelect = "select body from story where id="+x;
             System.out.println("The SQL statement is: " + strSelect + "\n");
 
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -28,10 +29,8 @@ public class DataBase {
             System.out.println("The records selected are:");
             int rowCount = 0;
             while(rset.next()) {
-                String title = rset.getString("title");
-                double price = rset.getDouble("price");
-                int    qty   = rset.getInt("qty");
-                System.out.println(title + ", " + price + ", " + qty);
+                String title = rset.getString("body");
+                System.out.println(title );
                 ++rowCount;
             }
             System.out.println("Total number of records = " + rowCount);
